@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <title>_BEST-FOOD</title>
+</head>
+<body>
+
+    <nav>
+        <ul class="nav-left">
+            <h1>BEST-FOOD</h1>
+            <div class="navegate">
+                <input type="text" placeholder="What are you looking for...">
+                <i class="material-icons">search</i>
+            </div>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="">Account</a></li>
+            <i class="material-icons">person_outline</i>
+        </ul>
+    </nav>
+    <div class="info">
+        <select name="" id="" class="types">
+            <option value="Categories" selected>Categories</option>
+            <option value="">Other Food & Beverage</option>
+            <option value="">Food Trucks</option>
+            <option value="">Fruit & Vegaetable Snacks</option>
+            <option value="">Chocolate</option>
+            <option value="">Biscuits</option>
+            <option value="">Grain Snacks</option>
+        </select>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li style="border-bottom:3px solid orange">Seller</li>
+            <li>Message</li>
+            <li>Service</li>
+        </ul>
+    </div>
+    <div class="title">
+        <h2>List your Food</h2>
+        <h2 id="add_food">Add your food</h2>
+    </div>
+      <dialog open>
+          <div id="food-dialog" style="display:none;">
+            <section>
+                <label>Add your food</label>
+                <input id="name" type="text" placeholder="Your name food" />
+                <input id="title" type="text" placeholder="Descriptions" />
+                <input id="much" type="text" placeholder="Price" />
+                <input id="image" type="file" placeholder="" />
+            </section>
+            
+            <menu>
+                <button id="cancle">Cancel</button>
+                <button id="create">Create</button>
+            </menu>
+        </dialog>
+    </div>
+    <div class="list-food">
+        <div class="card-food">
+            <p>Name</p>
+            <div>
+                <button>Edit</button>
+                <button>Create</button>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
