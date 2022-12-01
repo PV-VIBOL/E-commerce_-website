@@ -154,7 +154,7 @@ function createListfood(){
 }
 // Uplord image form input===============================================
 
-function uploadImage(element) {
+function getImage(element) {
   let file = element.files[0];
   let reader = new FileReader();
   reader.onloadend = function() {
@@ -226,7 +226,7 @@ function onCreate() {
 
 // Get image
 get_image.addEventListener('change', function(event) {
-  uploadImage(this);
+  getImage(this);
 });
 
 // show dialog
