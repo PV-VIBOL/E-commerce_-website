@@ -11,55 +11,55 @@ let link_image ="";
 //  create List of food==================================================================
 let foods = [
 {title:"Chip",
-price:"10.00",
+price:10.00,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/chip.png"},
 
 {title:"Jam",
-price:"5.00",
+price:5.00,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/jam.png"
 },
 
 {title:"Work noodle",
-price:"11.50",
+price:11.50,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/wok noodle.png"
 },
 
 {title:"Spicy noodle",
-price:"8.90",
+price:8.90,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/spicy noodle.png"
 },
 
 {title:"Kavlak", 
-price:"7.70",
+price:7.70,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/kavlak.png"
 },
 
 {title:"Pork",
-price:"9.20",
+price:9.20,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/pork.png"
 },
 
 {title:"Milk",
-price:"11.80",
+price:11.80,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/milk.png"
 },
 
 {title:"fish",
-price:"21.00",
+price:21.00,
 currency:"$",
 description:"High Quality Popular delicious ",
 image:"../images/fish.png",
