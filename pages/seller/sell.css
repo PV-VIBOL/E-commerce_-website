@@ -27,7 +27,6 @@
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
-    cursor: pointer;
 }
 #card-food #count{
     background: black;
@@ -46,8 +45,8 @@
 }
 #card-food:hover{
     border: 3px solid orange;
-    -ms-transform: scale(1.02);
-  -webkit-transform: scale(1.02);
-  transform: scale(1.02);
+    /* -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); */
 }
 

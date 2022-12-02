@@ -73,7 +73,6 @@ function create_Listfood(){
     let search_text = search_value.value.toLocaleLowerCase();
     for (let title of food_title) {
         let item = title.firstElementChild.textContent.toLocaleLowerCase();
-      console.log(search_text);
         if (item.indexOf(search_text) === -1) {
             title.style.display = "none";
         }

@@ -1,12 +1,4 @@
-// variable =========================================================================
 
-let dom_card_listfood = document.querySelector("#list-food")
-let dom_fooddialog = document.getElementById("food-dialog");
-let cancel = document.querySelector("#cancel"); 
-let create_food= document.querySelector("#create"); 
-let add_food = document.querySelector("#add_food");
-let get_image = document.querySelector("#file")
-let link_image ="";
 
 //  create List of food==================================================================
 let foods = [
@@ -65,6 +57,17 @@ description:"High Quality Popular delicious ",
 image:"../images/fish.png",
 },
 ];
+// variable =========================================================================
+
+let dom_card_listfood = document.querySelector("#list-food")
+let dom_fooddialog = document.getElementById("food-dialog");
+let cancel = document.querySelector("#cancel"); 
+let create_food= document.querySelector("#create"); 
+let add_food = document.querySelector("#add_food");
+let get_image = document.querySelector("#file")
+let link_image ="";
+let foodLocation = foods.length;
+
 //  LOCAL FOODSTORAGE  ---------------------------------------------------------
 function saveFood() {
   localStorage.setItem("foods", JSON.stringify(foods));
@@ -87,10 +90,17 @@ function hide(element) {
   }
   function onAddFood() {
     show(dom_fooddialog);
+    foodLocation = foods.length;
   }
   
   function onCancel(e) {
     hide(dom_fooddialog);
+    document.querySelector("#title").value = "";
+    document.querySelector("#text").value = "";
+    document.querySelector("#much").value = "";
+    document.querySelector("#currency").value = "";
+
+
   }
   
   function onCreate() {
@@ -168,7 +178,6 @@ function getImage(element) {
 function removefoods(event) {
   //  Get index
   let index = event.target.parentElement.parentElement.dataset.index;
-  console.log(index)
   // Remove food
   foods.splice(index, 1);
 
@@ -188,37 +197,59 @@ function editFood(event) {
   document.querySelector("#text").value = food.description;
   document.querySelector("#much").value = food.price;
   document.querySelector("#currency").value = food.currency;
-  link_image = link_image;
-
-  // TODO   Show the fooddialog
+  // link_image = link_image;
   show(dom_fooddialog);
-  foods.splice(index, 1);
   let create = document.querySelector("#create");
   create.textContent = "Edit";
-
+  foodLocation = index;
+  foods.splice(index, 1);
 }
 
 // create new food=========================================================================
 
 function onCreate() {
+  let get_title = document.querySelector("#title");
+  let get_text = document.querySelector("#text");
+  let get_much = document.querySelector("#much");
+  let get_currency = document.querySelector("#currency");
 
-  hide(dom_fooddialog);
+  let check_userinput = get_title.value && get_text.value && get_much.value && get_currency;
+  let input_field = [get_title, get_text, get_much,get_currency];
+  if (!(check_userinput)) {
+      for (let input of input_field) {
+          if (!(input.value)){
+              input.style.border = "2px solid red";
+          }
+          else {
+              input.style.border = "2px solid green";
 
-  let add_food = {};
-  add_food.title = document.querySelector("#title").value;
-  add_food.description = document.querySelector("#text").value;
-  add_food.price = document.querySelector("#much").value;
-  add_food.currency = document.querySelector("#currency").value;
-  add_food.image = link_image;
+          }
+      }
+  }
+  else{
+    
+    hide(dom_fooddialog);
+    let add_food = {};
+    add_food.title = document.querySelector("#title").value;
+    add_food.description = document.querySelector("#text").value;
+    add_food.price = document.querySelector("#much").value;
+    add_food.currency = document.querySelector("#currency").value;
+    add_food.image = link_image;
+    
+    foods.splice(foodLocation, 0, add_food);
+    saveFood();
+    createListfood();
 
-  foods.push(add_food);
-  saveFood();
-  createListfood();
+    let create = document.querySelector("#create");
+    create.textContent = "Edit";
   
-  document.querySelector("#title").value = "";
-  document.querySelector("#text").value = "";
-  document.querySelector("#much").value = "";
-  document.querySelector("#currency").value = "";
+    
+    document.querySelector("#title").value = "";
+    document.querySelector("#text").value = "";
+    document.querySelector("#much").value = "";
+    document.querySelector("#currency").value = "";
+  }  
+  
 
 }
 // create event food=============================================================
