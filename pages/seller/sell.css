@@ -22,18 +22,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background:gainsboro;
+    background:black;
+    color: orange;
     border-radius: 20px;
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
-}
-#card-food #count{
-    background: black;
-    padding: 15px;
-    border-radius: 50%;
-    color:orange;
-
 }
 .number-food{
     margin-left: 20px;
@@ -42,6 +36,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+}
+#img-sell {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 #card-food:hover{
     border: 3px solid orange;

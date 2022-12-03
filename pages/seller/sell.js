@@ -2,60 +2,60 @@
 
 //  create List of food==================================================================
 let foods = [
-{title:"Chip",
-price:10.00,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/chip.png"},
+// {title:"Chip",
+// price:10.00,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300"},
 
-{title:"Jam",
-price:5.00,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/jam.png"
-},
+// {title:"Jam",
+// price:5.00,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300"
+// },
 
-{title:"Work noodle",
-price:11.50,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/wok noodle.png"
-},
+// {title:"Work noodle",
+// price:11.50,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300"
+// },
 
-{title:"Spicy noodle",
-price:8.90,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/spicy noodle.png"
-},
+// {title:"Spicy noodle",
+// price:8.90,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300"
+// },
 
-{title:"Kavlak", 
-price:7.70,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/kavlak.png"
-},
+// {title:"Kavlak", 
+// price:7.70,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300",
+// },
 
-{title:"Pork",
-price:9.20,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/pork.png"
-},
+// {title:"Pork",
+// price:9.20,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300",
+// },
 
-{title:"Milk",
-price:11.80,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/milk.png"
-},
+// {title:"Milk",
+// price:11.80,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300",
+// },
 
-{title:"fish",
-price:21.00,
-currency:"$",
-description:"High Quality Popular delicious ",
-image:"../images/fish.png",
-},
+// {title:"fish",
+// price:21.00,
+// currency:"$",
+// description:"High Quality Popular delicious ",
+// image:"https://via.placeholder.com/300"
+// },
 ];
 // variable =========================================================================
 
@@ -95,17 +95,36 @@ function hide(element) {
   
   function onCancel(e) {
     hide(dom_fooddialog);
+    let get_title = document.querySelector("#title");
+    let get_text = document.querySelector("#text");
+    let get_much = document.querySelector("#much");
+    let get_currency = document.querySelector("#currency");
+  
     document.querySelector("#title").value = "";
     document.querySelector("#text").value = "";
     document.querySelector("#much").value = "";
     document.querySelector("#currency").value = "";
-
-
+    let input_field = [get_title, get_text, get_much,get_currency];
+    for (let input of input_field) {
+      input.style.border = "2px solid black";
+    }
   }
   
   function onCreate() {
     hide(dom_fooddialog);
   } 
+
+  // Uplord image form input===============================================
+
+function getImage(element) {
+  let file = element.files[0];
+  let reader = new FileReader();
+  reader.onloadend = function() {
+      link_image = reader.result;
+  }
+  reader.readAsDataURL(file);
+}
+
 
 // create foods ==================================================================
 
@@ -115,8 +134,6 @@ function createListfood(){
   listfood.id = "cards-item";
   
   for (let index = 0; index < foods.length; index++) {
-    let counter = index+1
-
     let card_food = document.createElement("div")
     card_food.id ="card-food"
     card_food.dataset.index = index
@@ -125,18 +142,26 @@ function createListfood(){
     div1.className = "number-food"
     card_food.appendChild(div1);
     
-    let number = document.createElement("p");
-    number.id = "count"
-    number.textContent = counter;
-    div1.appendChild(number)
+    let image_food = document.createElement("img");
+    image_food.id = "img-sell";
+    image_food.src = foods[index].image;
+    div1.appendChild(image_food);
 
     let titles = document.createElement("p");
     titles.textContent = foods[index].title;
     div1.appendChild(titles)
 
     let price = document.createElement("p");
-    price.textContent = foods[index].price;
-    div1.appendChild(price)
+    let span = document.createElement("span");
+    span.textContent = foods[index].price;
+
+    let currency = document.createElement("span");
+    currency.textContent = foods[index].currency;
+
+    price.appendChild(span);
+    price.appendChild(currency);
+    div1.appendChild(price);
+
 
     let descriptions = document.createElement("p");
     descriptions.textContent = foods[index].description;
@@ -162,17 +187,6 @@ function createListfood(){
   }
 
 }
-// Uplord image form input===============================================
-
-function getImage(element) {
-  let file = element.files[0];
-  let reader = new FileReader();
-  reader.onloadend = function() {
-      link_image = reader.result;
-  }
-  reader.readAsDataURL(file);
-}
-
 // remove the foods=============================================================
 
 function removefoods(event) {
@@ -186,7 +200,6 @@ function removefoods(event) {
 
   createListfood();
 }
-
 // Edit your food ==========================================================================
 
 function editFood(event) {
@@ -214,15 +227,11 @@ function onCreate() {
   let get_currency = document.querySelector("#currency");
 
   let check_userinput = get_title.value && get_text.value && get_much.value && get_currency;
-  let input_field = [get_title, get_text, get_much,get_currency];
+  let input_field = [get_title,get_currency, get_text, get_much,];
   if (!(check_userinput)) {
       for (let input of input_field) {
           if (!(input.value)){
               input.style.border = "2px solid red";
-          }
-          else {
-              input.style.border = "2px solid green";
-
           }
       }
   }
@@ -235,8 +244,8 @@ function onCreate() {
     add_food.price = document.querySelector("#much").value;
     add_food.currency = document.querySelector("#currency").value;
     add_food.image = link_image;
-    
-    foods.splice(foodLocation, 0, add_food);
+
+    foods.splice(0,0, add_food);
     saveFood();
     createListfood();
 
@@ -244,11 +253,15 @@ function onCreate() {
     create.textContent = "Edit";
   
     
-    document.querySelector("#title").value = "";
-    document.querySelector("#text").value = "";
-    document.querySelector("#much").value = "";
-    document.querySelector("#currency").value = "";
+    // document.querySelector("#title").value = "";
+    // document.querySelector("#text").value = "";
+    // document.querySelector("#much").value = "";
+    // document.querySelector("#currency").value = "";
   }  
+  document.querySelector("#title").value = "";
+  document.querySelector("#text").value = "";
+  document.querySelector("#much").value = "";
+  document.querySelector("#currency").value = "";
   
 
 }

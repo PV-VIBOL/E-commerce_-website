@@ -15,7 +15,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background:rgba(0, 0, 0, 0.642);
+    background:orange;
     padding: 15px;
     z-index: 1;
 
@@ -34,7 +34,7 @@ nav{
     display: flex;
     align-items: center;
     width: 80%;
-    background:orange;
+    background:black;
     padding-right: 30px; ;
     border-radius: 30px;
 }
@@ -62,11 +62,11 @@ nav{
 }
 
 .info{
+    background:black;
     padding: 10px;
     border-bottom: 2px solid orange;
     display: flex;
     align-items: center;
-    margin-top: 10px;
 }
 .info #categories{
     width: 30%;
@@ -81,13 +81,18 @@ nav{
 }
 .menu a{
     text-decoration: none;
+    color:orange;
 }
 li{
+    color: orange;
     list-style: none;
 }
 li:hover{
     border-bottom:3px solid orange;
     transition: 0.1s;
+}
+.material-icons{
+    color: #fff;
 }
 /* create dialog of food================================================================= */
 #food-dialog {
@@ -155,8 +160,6 @@ button:hover{
     box-shadow: inset 300px 0 0 0 green;
     cursor: pointer;
     color: white;
-    /* background:green;
-    color: white; */
 }
 
 /* create cards of food __________________________________________*/
@@ -215,4 +218,8 @@ footer h3{
     display: flex;
     align-items: center;
     gap: 10px;
+}
+#detail {
+    text-decoration: none;
+    color: black;
 }

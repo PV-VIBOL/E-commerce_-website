@@ -6,14 +6,22 @@ let foods = JSON.parse(localStorage.getItem("foods"));
 let dom_container = document.querySelector(".container");
 let search_value = document.querySelector("#search");
  search_value.addEventListener("keyup",searchFood)
+let food_detail  = []
+
 // dom_searchinput.addEventListener("keyup",search_food)
 //  create list of foods=================================================
 
-function create_Listfood(){
+function getDetail(event){
+  let index = event.target.dataset.index;
+  food_detail.push(foods[index]);
+  localStorage.setItem("food-detail", JSON.stringify(food_detail));
+}
+
+function createListfood(){
     for (let index = 0; index < foods.length; index++) {
+
       let card_food = document.createElement("div")
       card_food.className ="cards"
-      card_food.dataset.index = index
       
       let titles = document.createElement("p");
       titles.textContent = foods[index].title;
@@ -55,15 +63,21 @@ function create_Listfood(){
       let btn_buy = document.createElement("button");
       btn_buy.textContent = "Buy here"
       
+      
       let button = document.createElement("button");
       button.id = "btn-detail"
       button.textContent = "Detail"
+      button.dataset.index = index;
+      button.addEventListener("click",getDetail)
 
+      let link_detail = document.createElement("a");
+      link_detail.href = "detail/detail.html";
+      link_detail.appendChild(button)
+      
       div2.appendChild(btn_buy)
-      div2.appendChild(button)
+      div2.appendChild(link_detail)
       card_food.appendChild(div2);
       
-      // card_items.appendChild(card_food);
       dom_container.appendChild(card_food);
     };
   }
@@ -81,5 +95,5 @@ function create_Listfood(){
         }
     }
 }
-create_Listfood();
-  
+createListfood();
+

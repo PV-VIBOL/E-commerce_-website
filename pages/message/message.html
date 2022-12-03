@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>_BEST-FOOD</title>
+
+    <link rel="stylesheet" href="message.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
     <nav>
@@ -31,29 +33,53 @@
             <option value="">Chocolate</option>
             <option value="">Biscuits</option>
             <option value="">Grain Snacks</option>
-            <option value="">Grain Snacks</option>
         </select>
         <ul class="menu">
             <div class="contact">
                 <i class="material-icons ">home</i>
-                <li style="border-bottom:3px solid orange ;">Home</li>
+                <li ><a href="../index.html">Home</a></li>
             </div>
             <div class="contact">
                 <i class="material-icons ">phone_in_talk</i>
-                <li><a href="seller/sell.html">Seller</a></li>
+                <li><a href="../seller/sell.html">Seller</a></li>
             </div>
             <div class="contact">
                 <i class="material-icons ">message</i>
-                <li><a href="../pages/message/message.html">Massage</a></li>
+                <li style="border-bottom:3px solid orange">Message</li>
             </div>
             <div class="contact">
                 <i class="material-icons ">add_shopping_cart</i>
-                <li><a href="cart/cart.html">Cart</a></li>
+                <li><a href="../cart/cart.html">Cart</a></li>
             </div>
         </ul>
     </div>
-    <div class="container"></div>
-    <footer>
+    <div id="sign-up">
+        <img src="../../images/signUp.png" alt="">
+        <div class=" form-container">
+            <form action=""></form>
+                <div class="btn-group">
+                    <button class="sign-up" >Sign Up</button>
+                    <button class="log-in">log In</button>
+                </div>
+                <div class="title">
+                     <h3>Sign Up for Free</h3>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="First Name*" id="name">
+                    <input type="text" placeholder="Last Name*">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address*">
+                    <input type="password" placeholder="Set A Password*">
+                </div>
+                <div class="form-group">
+                    <button id="get">Submmit</button>
+                </div>
+    
+         </div>
+    </div>
+
+     <footer>
         <div>
             <h3>About Us</h3>
             <p>We want to bring <br>
@@ -85,6 +111,7 @@
             <p>Privacy Policy</p>
         </div>
     </footer>
-    <script src="main.js"></script>
+
+    
 </body>
 </html>
