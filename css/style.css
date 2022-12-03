@@ -10,12 +10,18 @@ h1{
     color: #fff;
 }
 nav{
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background:orange;
-    padding: 10px;
+    padding: 15px;
+    z-index: 1;
+
 }
+
+
 .nav-left,.nav-right{
     display: flex;
     align-items: center;
@@ -28,7 +34,7 @@ nav{
     display: flex;
     align-items: center;
     width: 80%;
-    background: #000;
+    background:black;
     padding-right: 30px; ;
     border-radius: 30px;
 }
@@ -43,18 +49,27 @@ nav{
     color: #fff;
 
 }
-.nav-right a:hover{
-    border-bottom: 3px solid #000;
+.nav-right img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
+/* .nav-right a:hover{
+    border-bottom: 3px solid #000;
+} */
 .navegate i{
     color: #fff;
 }
+
 .info{
+    background:black;
     padding: 10px;
     border-bottom: 2px solid orange;
     display: flex;
     align-items: center;
-    margin-top: 10px;
+}
+.info #categories{
+    width: 30%;
 }
 .types{
     padding: 8px;
@@ -66,71 +81,87 @@ nav{
 }
 .menu a{
     text-decoration: none;
+    color:orange;
 }
 li{
+    color: orange;
     list-style: none;
 }
 li:hover{
     border-bottom:3px solid orange;
+    transition: 0.1s;
 }
-#questions-dialog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
+.material-icons{
+    color: #fff;
+}
+/* create dialog of food================================================================= */
+#food-dialog {
+    height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    z-index: 10;
-  }
-  
-   dialog {
     position: fixed;
-    top: 10vh;
-    left: 20%;
-    width: 60%;
-    z-index: 100;
-    border-radius: 12px;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-  } 
-  dialog section {
-    padding: 1rem;
-  }
-  
-  dialog menu {
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0;
-  }
-  
-  dialog input[type= "text"] {
-    display: block;
+    top:0vh;
+    display: none;
+    background: rgba(0, 0, 0, 0.48);
+}
+
+#form-container {
+    padding: 20px;
+    width: 50%;
+    height: 60vh;
+    margin:10% auto;
+    z-index: 10;
+    background: white;
+    border-radius: 20px;
+    border-left:10px solid green;
+    border-right:10px solid green;
+}
+#form-container input,select{
     padding: 10px;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  dialog input:focus {
-    background-color: #f0e6fd;
-    outline: none;
-  }
+    margin-top: 10px;
+}
+select{
+    margin-bottom: 10px;
+}
+#form-container label{
+    color: orange;
+    font-weight: bold;
+}
+#form-container menu{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
 button{
     padding: 10px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     background:orange;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 green;
+    margin: 0 -.20rem;
+    padding: 20 .20rem;
+    transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
 }
- 
+.buy-now{
+    margin-top: 10px;
+    display: flex;
+    justify-content:space-between;
+}
+.btn-edit{
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+button:hover{
+    box-shadow: inset 300px 0 0 0 green;
+    cursor: pointer;
+    color: white;
+}
+
 /* create cards of food __________________________________________*/
 .container{
     margin-top: 40px;
@@ -141,9 +172,20 @@ button{
     gap: 30px;
 }
 .cards{
+    cursor: pointer;
+    border-radius: 10px;
     background-color:white;
     padding: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.cards:hover{
+    border: 2px solid orange;
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+    transition: 0.2s;
+
+  
 }
 .container img{
     height: 200px;
@@ -158,32 +200,26 @@ button{
 .container i{
     color: orange;
 }
-
-.title{
-    margin-top: 20px;
+footer{
+    margin-top: 50px;
+    background: #000;
+    color: #fff;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.title h2{
-    background: orange;
+    justify-content: space-around;
+    text-align: center;
     padding: 10px;
-    border-radius: 10px;
 }
-.list-food{
-    background:#fff;
-    padding: 20px;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-    width: 90%;
-    margin: auto;
-    margin-top: 20px;
+footer h3{
+    margin-top: 50px;
+    color: orange;
+    margin-bottom: 20px;
 }
-.card-food{
+.contact{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background:gainsboro;
-    border-radius: 20px;
-    padding: 10px;
-
+    gap: 10px;
+}
+#detail {
+    text-decoration: none;
+    color: black;
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="sell.css">
 
     <title>_BEST-FOOD</title>
 </head>
@@ -20,13 +21,13 @@
             </div>
         </ul>
         <ul class="nav-right">
-            <li><a href="">Account</a></li>
-            <i class="material-icons">person_outline</i>
+            <li><a href="../account/account.html">Account</a></li>
+            <img src="../../images/vibol.jpg" alt="">
         </ul>
     </nav>
     <div class="info">
-        <select name="" id="" class="types">
-            <option value="Categories" selected>Categories</option>
+        <select name="" id="categories" class="types">
+            <option value="Categories" disabled>Categories</option>
             <option value="">Other Food & Beverage</option>
             <option value="">Food Trucks</option>
             <option value="">Fruit & Vegaetable Snacks</option>
@@ -35,43 +36,91 @@
             <option value="">Grain Snacks</option>
         </select>
         <ul class="menu">
-            <li><a href="../index.html">Home</a></li>
-            <li style="border-bottom:3px solid orange">Seller</li>
-            <li>Message</li>
-            <li>Service</li>
+            <div class="contact">
+                <i class="material-icons ">home</i>
+                <li><a href="../index.html">Home</a></li>
+           </div>
+            <div class="contact">
+                <i class="material-icons ">phone_in_talk</i>
+                <li style="border-bottom:3px solid orange">Seller</li>
+            </div>
+            <div class="contact">
+                <i class="material-icons ">message</i>
+                <li><a href="../../pages/message/message.html">Message</a></li>
+            </div>
+            <div class="contact">
+                <i class="material-icons ">add_shopping_cart</i>
+                <li><a href="../cart/cart.html">Cart</a></li>
+            </div>
         </ul>
     </div>
     <div class="title">
-        <h2>List your Food</h2>
+        <h3>List your Food</h3>
         <h2 id="add_food">Add your food</h2>
     </div>
-      <dialog open>
-          <div id="food-dialog" style="display:none;">
+    <div >
+
+    <div id="food-dialog">
+        <div id="form-container">
             <section>
                 <label>Add your food</label>
-                <input id="name" type="text" placeholder="Your name food" />
-                <input id="title" type="text" placeholder="Descriptions" />
-                <input id="much" type="text" placeholder="Price" />
-                <input id="image" type="file" placeholder="" />
-            </section>
+                <input id="title" type="text" placeholder="Your name food" />
+                <input id="text" type="text" placeholder="Descriptions" />
+                <input id="much" type="number" placeholder="Price" />
+                <select name="" id="currency">
+                    <option value="currency" selected disabled>Currency</option>
+                    <option value="$">$</option>
+                    <option value="€">€</option>
+                    <option value="¤">¤</option>
+                    <option value="¥">¥</option>
+                    <option value=" £"> £</option>
+                </select>
+                <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+                <p><input type="file"  accept="image/*" name="image" id="file",style ="display:none""></p>
             
+            </section>
             <menu>
-                <button id="cancle">Cancel</button>
+                <button id="cancel">Cancel</button>
                 <button id="create">Create</button>
             </menu>
-        </dialog>
-    </div>
-    <div class="list-food">
-        <div class="card-food">
-            <p>Name</p>
-            <div>
-                <button>Edit</button>
-                <button>Create</button>
-            </div>
-
         </div>
-
     </div>
-    <script src="main.js"></script>
+    <div id ="list-food">
+        <div id ="cards-item"></div>
+    </div>
+    <footer>
+        <div>
+            <h3>About Us</h3>
+            <p>We want to bring <br>
+            high qulity food and <br>
+            live with good health together
+            <h3> Contact Us</h3>
+            <div class="contact">
+                <i class="material-icons ">phone</i>
+                <p>+855 979 273 241</p>
+            </div>
+            <div class="contact">
+                <i class="material-icons ">mail</i>
+                <p>Youremail.com</p>
+            </div>
+        </p>
+        </div>
+        <div >
+            <h3>Information</h3>
+            <p>About Us</p>
+            <p>More Search</p>
+            <p>Blog</p>
+            <p>Testimoinals</p>
+        </div>
+        <div >
+            <h3>Helpful Links</h3>
+            <p>Services</p>
+            <p>Supports</p>
+            <p>Term & Condition</p>
+            <p>Privacy Policy</p>
+        </div>
+    </footer>
+
+    <script src="sell.js"></script>
 </body>
 </html>
