@@ -1,5 +1,5 @@
 //  create List of food==================================================================
-let foods = [
+let foods = [{title: "Chip", description: "High Quality Popular delicious ", price: "7.90", currency: "$"}
 ];
 // variable =========================================================================
 
