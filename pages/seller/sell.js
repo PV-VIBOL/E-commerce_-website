@@ -1,61 +1,5 @@
-
-
 //  create List of food==================================================================
 let foods = [
-// {title:"Chip",
-// price:10.00,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300"},
-
-// {title:"Jam",
-// price:5.00,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300"
-// },
-
-// {title:"Work noodle",
-// price:11.50,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300"
-// },
-
-// {title:"Spicy noodle",
-// price:8.90,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300"
-// },
-
-// {title:"Kavlak", 
-// price:7.70,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300",
-// },
-
-// {title:"Pork",
-// price:9.20,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300",
-// },
-
-// {title:"Milk",
-// price:11.80,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300",
-// },
-
-// {title:"fish",
-// price:21.00,
-// currency:"$",
-// description:"High Quality Popular delicious ",
-// image:"https://via.placeholder.com/300"
-// },
 ];
 // variable =========================================================================
 
@@ -125,7 +69,6 @@ function getImage(element) {
   reader.readAsDataURL(file);
 }
 
-
 // create foods ==================================================================
 
 function createListfood(){
@@ -162,7 +105,6 @@ function createListfood(){
     price.appendChild(currency);
     div1.appendChild(price);
 
-
     let descriptions = document.createElement("p");
     descriptions.textContent = foods[index].description;
     card_food.appendChild(descriptions)
@@ -170,7 +112,6 @@ function createListfood(){
     let div = document.createElement("div");
     div.className = "btn-edit"
     card_food.appendChild(div);
-    
     
     let btn_edit = document.createElement("button");
     btn_edit.textContent = "Edit";
@@ -185,20 +126,33 @@ function createListfood(){
     listfood.appendChild(card_food)
     dom_card_listfood.appendChild(listfood);
   }
-
 }
 // remove the foods=============================================================
 
 function removefoods(event) {
-  //  Get index
-  let index = event.target.parentElement.parentElement.dataset.index;
-  // Remove food
-  foods.splice(index, 1);
+  let alert_sms = document.querySelector("#alert-message");
+  alert_sms.style.display = "block";
+  let btn_no = document.querySelector("#no");
+  btn_no.addEventListener("click",btnNo )
+  
+  let btn_yes= document.querySelector("#yes");
+  btn_yes.addEventListener("click",btnYes)
 
-  // Save to local storage
-  saveFood();
+  function btnYes(){
+    //  Get index
+    let index = event.target.parentElement.parentElement.dataset.index;
+    // Remove food
+    foods.splice(index, 1);
+    // Save to local storage
+    alert_sms.style.display = "none";
+    saveFood();
+    createListfood();
+  }
+  function btnNo(){
+    alert_sms.style.display = "none";
 
-  createListfood();
+  }
+
 }
 // Edit your food ==========================================================================
 
@@ -251,38 +205,38 @@ function onCreate() {
 
     let create = document.querySelector("#create");
     create.textContent = "Edit";
-  
-    
-    // document.querySelector("#title").value = "";
-    // document.querySelector("#text").value = "";
-    // document.querySelector("#much").value = "";
-    // document.querySelector("#currency").value = "";
+    document.querySelector("#title").value = "";
+    document.querySelector("#text").value = "";
+    document.querySelector("#much").value = "";
+    document.querySelector("#currency").value = "";
   }  
   document.querySelector("#title").value = "";
   document.querySelector("#text").value = "";
   document.querySelector("#much").value = "";
   document.querySelector("#currency").value = "";
-  
 
 }
+  // Uplord image form input===============================================
+  function getImage(element) {
+    let file = element.files[0];
+    let reader = new FileReader();
+    reader.onloadend = function() {
+        link_image = reader.result;
+    }
+    reader.readAsDataURL(file);
+  }
+  
 // create event food=============================================================
-
-
 // Get image
 get_image.addEventListener('change', function(event) {
   getImage(this);
 });
-
 // show dialog
 add_food.addEventListener("click",onAddFood)
-
 // close dialog
 cancel.addEventListener("click",onCancel)
-
 // create dialog
 create_food.addEventListener("click",onCreate)
-
-
 // saveFood();
 loadFood();
 createListfood();

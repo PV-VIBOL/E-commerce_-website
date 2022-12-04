@@ -48,4 +48,40 @@
     -webkit-transform: scale(1.02);
     transform: scale(1.02); */
 }
+#alert-message {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top:0vh;
+    display:none;
+    background: rgba(0, 0, 0, 0.48);
+}
+
+#alert-item {
+    padding: 20px;
+    width: 20%;
+    height: 20vh;
+    margin:10% auto;
+    z-index: 10;
+    background: white;
+    border-radius: 20px;
+    border-left:10px solid green;
+    border-right:10px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#alert-item menu{
+    display: flex;
+    justify-content: space-between;
+}
+/* #edit{
+    display:none;
+}
+#create{
+    display: none;
+}
+ */
+
+
 

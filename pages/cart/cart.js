@@ -1,21 +1,36 @@
-let foods = JSON.parse(localStorage.getItem("food-detail"));
-console.log(foods)
+let foods = JSON.parse(localStorage.getItem("food-cart"));
+let dom_cart = document.querySelector("#container-cart"); 
 
-let dom_cart = document.querySelector("#container-detail");
+let span = document.querySelector("#span")
+span.textContent = foods.length;
 
+let btn_checkout= document.querySelector("#checkout");
+btn_checkout.addEventListener("click",checkPrice)
+
+
+let  total = 0;
 function createListfood(){
+  document.querySelector("#cart-item").remove();
+  let cart_item = document.createElement("div");
+  cart_item.id = "cart-item";
   for (let index = 0; index < foods.length; index++) {
+    total += Math.round(foods[index].price);
+    console.log(total);
 
     let card_food = document.createElement("div")
-    card_food.className ="cards"
+    card_food.className ="card-cart";
     
-    let titles = document.createElement("p");
-    titles.textContent = foods[index].title;
+    let titles = document.createElement("h2");
+    titles.textContent =foods[index].title;
     card_food.appendChild(titles)
+
+    let div_img = document.createElement("div");
+    div_img.className = "image"
 
     let image_food = document.createElement("img");
     image_food.src = foods[index].image;
-    card_food.appendChild(image_food);
+    div_img.appendChild(image_food);
+    card_food.appendChild(div_img);
     
     
     let description = document.createElement("p");
@@ -32,39 +47,58 @@ function createListfood(){
     price.appendChild(span);
     price.appendChild(currency);
     card_food.appendChild(price);
-    
-    let div1 = document.createElement("div");
-    for (let i=0; i<4; i++){
-      let star = document.createElement("i")
-      star.className ="material-icons";
-      star.textContent ="star";
-      div1.appendChild(star);
-      
-    };
-    card_food.appendChild(div1)
-    
-    let div2 = document.createElement("div")
-    div2.className = "buy-now"
+
+    let div_btn = document.createElement("div")
+    div_btn.id = "btn-cart";
 
     let btn_buy = document.createElement("button");
-    btn_buy.textContent = "Buy here"
-    
-    
-    let button = document.createElement("button");
-    button.id = "btn-detail"
-    button.textContent = "Detail"
-    button.dataset.index = index;
-    button.addEventListener("click",getDetail)
+    btn_buy.textContent = "Buy here";
+    div_btn.appendChild(btn_buy);
 
-    let link_detail = document.createElement("a");
-    link_detail.href = "detail/detail.html";
-    link_detail.appendChild(button)
-    
-    div2.appendChild(btn_buy)
-    div2.appendChild(link_detail)
-    card_food.appendChild(div2);
-    
-    cart.appendChild(card_food);
+    let link_home = document.createElement("a")
+    // link_home.href = "../index.html";
+
+    let btn_cencel = document.createElement("button");
+    btn_cencel.textContent = "Delete";
+    btn_cencel.dataset.index = index
+    btn_cencel.addEventListener("click",removeCart)
+    div_btn.appendChild(btn_cencel);
+
+    card_food.appendChild(div_btn);
+    cart_item.appendChild(card_food);
+    dom_cart.appendChild(cart_item);
   };
+  let checkout = document.querySelector("#price");
+  checkout.textContent ="Total is : "+"$"+total;
 }
+// check price product===================================
+let alert_sms = document.querySelector("#alert-message");
+function checkPrice(){
+  alert_sms.style.display = "block";
+}
+let btn_no = document.querySelector("#no");
+btn_no.addEventListener("click",btnNo )
+
+let btn_yes= document.querySelector("#yes");
+btn_yes.addEventListener("click",btnNo)
+
+function btnNo(){
+  alert_sms.style.display = "none";
+
+}
+
+
+function removeCart(event) {
+  let index = event.target.dataset.index;
+  // Remove food
+  foods.splice(index, 1);
+  
+  span.textContent = foods.length;
+  // Save to local storage
+  localStorage.setItem("food-cart", JSON.stringify(foods));
+  total = 0;
+  createListfood();
+  // createListfood();
+}
+foods = JSON.parse(localStorage.getItem("food-cart"));
 createListfood();

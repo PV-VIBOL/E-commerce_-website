@@ -28,7 +28,7 @@ nav{
     gap: 20px;
 }
 .nav-left{
-    width: 80%;
+    width: 90%;
 }
 .navegate{
     display: flex;
@@ -123,7 +123,7 @@ li:hover{
     margin-top: 10px;
 }
 select{
-    margin-bottom: 10px;
+    margin-bottom:10px;
 }
 #form-container label{
     color: orange;
@@ -218,6 +218,15 @@ footer h3{
     display: flex;
     align-items: center;
     gap: 10px;
+}
+.contact span{
+    color: orange;
+    padding: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-right: -30px;
+    margin-top: -30px;
+
 }
 #detail {
     text-decoration: none;

@@ -21,7 +21,6 @@
             </div>
         </ul>
         <ul class="nav-right">
-            <li><a href="../account/account.html">Account</a></li>
             <img src="../../images/vibol.jpg" alt="">
         </ul>
     </nav>
@@ -49,6 +48,7 @@
                 <li><a href="../../pages/message/message.html">Message</a></li>
             </div>
             <div class="contact">
+                <span id="span">0</span>
                 <i class="material-icons ">add_shopping_cart</i>
                 <li><a href="../cart/cart.html">Cart</a></li>
             </div>
@@ -76,12 +76,23 @@
                     <option value=" £"> £</option>
                 </select>
                 <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                <p><input type="file"  accept="image/*" name="image" id="file",style ="display:none""></p>
-            
+                <p><input type="file"  accept="image/*" name="image" id="file",style ="display:none"></p>
             </section>
             <menu>
                 <button id="cancel">Cancel</button>
-                <button id="create">Create</button>
+                <div>
+                    <button id="create">Create</button>
+                </div>
+            </menu>
+        </div>
+    </div>
+    <div id="alert-message">
+        <div id="alert-item">
+            <h3>Are you sure to delete?</h3>
+            <p></p>
+            <menu>
+                <button id="no">No</button>
+                <button id="yes">Yes</button>
             </menu>
         </div>
     </div>

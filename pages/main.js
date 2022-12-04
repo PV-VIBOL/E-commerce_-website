@@ -5,8 +5,13 @@ let foods = JSON.parse(localStorage.getItem("foods"));
 // variables=================================================================
 let dom_container = document.querySelector(".container");
 let search_value = document.querySelector("#search");
- search_value.addEventListener("keyup",searchFood)
-let food_detail  = []
+search_value.addEventListener("keyup",searchFood)
+let food_detail  = [];
+let food_cart= JSON.parse(localStorage.getItem("food-cart"));
+let counter = food_cart.length
+if (counter<1){
+  food_cart  = [];
+}
 
 // dom_searchinput.addEventListener("keyup",search_food)
 //  create list of foods=================================================
@@ -15,6 +20,14 @@ function getDetail(event){
   let index = event.target.dataset.index;
   food_detail.push(foods[index]);
   localStorage.setItem("food-detail", JSON.stringify(food_detail));
+}
+function getCart(event){
+  counter ++;
+  let span = document.querySelector("#span")
+  span.textContent = counter;
+  let index = event.target.dataset.index;
+  food_cart.push(foods[index]);
+  localStorage.setItem("food-cart", JSON.stringify(food_cart));
 }
 
 function createListfood(){
@@ -48,11 +61,18 @@ function createListfood(){
       card_food.appendChild(price);
       
       let div1 = document.createElement("div");
-      for (let i=0; i<4; i++){
+      for (let i=0; i<3; i++){
         let star = document.createElement("i")
         star.className ="material-icons";
         star.textContent ="star";
         div1.appendChild(star);
+        
+      };
+      for (let i=0; i<2; i++){
+        let starHalf = document.createElement("i")
+        starHalf.className ="material-icons";
+        starHalf.textContent ="star_half";
+        div1.appendChild(starHalf);
         
       };
       card_food.appendChild(div1)
@@ -61,8 +81,13 @@ function createListfood(){
       div2.className = "buy-now"
 
       let btn_buy = document.createElement("button");
-      btn_buy.textContent = "Buy here"
-      
+      btn_buy.textContent = "Add+ Cart"
+      btn_buy.dataset.index = index;
+      btn_buy.addEventListener("click",getCart)
+
+      let link_cart = document.createElement("a");
+      // link_cart.href = "cart/cart.html";
+      link_cart.appendChild(btn_buy)
       
       let button = document.createElement("button");
       button.id = "btn-detail"
@@ -74,7 +99,7 @@ function createListfood(){
       link_detail.href = "detail/detail.html";
       link_detail.appendChild(button)
       
-      div2.appendChild(btn_buy)
+      div2.appendChild(link_cart)
       div2.appendChild(link_detail)
       card_food.appendChild(div2);
       
