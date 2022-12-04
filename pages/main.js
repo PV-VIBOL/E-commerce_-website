@@ -18,6 +18,7 @@ if (counter<1){
 
 function getDetail(event){
   let index = event.target.dataset.index;
+  console.log(index)
   food_detail.push(foods[index]);
   localStorage.setItem("food-detail", JSON.stringify(food_detail));
 }
