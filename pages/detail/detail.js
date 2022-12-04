@@ -64,7 +64,7 @@ function createListfood(){
       btn_cencel.textContent ="cencel";
 
       let link_home = document.createElement("a")
-      link_home.href = "../index.html";
+      link_home.href = "../../index.html";
 
 
       btn_items.appendChild(btn_cart);

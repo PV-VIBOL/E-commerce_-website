@@ -97,7 +97,7 @@ function createListfood(){
       button.addEventListener("click",getDetail)
 
       let link_detail = document.createElement("a");
-      link_detail.href = "detail/detail.html";
+      link_detail.href = "pages/detail/detail.html";
       link_detail.appendChild(button)
       
       div2.appendChild(link_cart)
