@@ -1,5 +1,7 @@
 //  create List of food==================================================================
-let foods = [{title: "Chip", description: "High Quality Popular delicious ", price: "7.90", currency: "$"}
+let foods = [{title: "Chip", description: "High Quality Popular delicious ", price: "7.90", currency: "$"},
+{title: "Jam", description: "High Quality Popular delicious ", price: "7.90", currency: "$"},
+{title: "Jam", description: "High Quality Popular delicious ", price: "7.90", currency: "$"}
 ];
 // variable =========================================================================
 
@@ -36,7 +38,62 @@ function hide(element) {
     show(dom_fooddialog);
     foodLocation = foods.length;
   }
+  function createListfood(){
+    document.querySelector("#cards-item").remove();
+    let listfood = document.createElement("div");
+    listfood.id = "cards-item";
+    
+    for (let index = 0; index < foods.length; index++) {
+      let card_food = document.createElement("div")
+      card_food.id ="card-food"
+      card_food.dataset.index = index
+      
+      let div1 = document.createElement("div");
+      div1.className = "number-food"
+      card_food.appendChild(div1);
+      
+      let image_food = document.createElement("img");
+      image_food.id = "img-sell";
+      image_food.src = foods[index].image;
+      div1.appendChild(image_food);
   
+      let titles = document.createElement("p");
+      titles.textContent = foods[index].title;
+      div1.appendChild(titles)
+  
+      let price = document.createElement("p");
+      let span = document.createElement("span");
+      span.textContent = foods[index].price;
+  
+      let currency = document.createElement("span");
+      currency.textContent = foods[index].currency;
+  
+      price.appendChild(span);
+      price.appendChild(currency);
+      div1.appendChild(price);
+  
+      let descriptions = document.createElement("p");
+      descriptions.textContent = foods[index].description;
+      card_food.appendChild(descriptions)
+      
+      let div = document.createElement("div");
+      div.className = "btn-edit"
+      card_food.appendChild(div);
+      
+      let btn_edit = document.createElement("button");
+      btn_edit.textContent = "Edit";
+      btn_edit.addEventListener("click",editFood )
+      div.appendChild(btn_edit);
+      
+      let btn_delete= document.createElement("button");
+      btn_delete.textContent = "Delete";
+      btn_delete.addEventListener("click",removefoods)
+      div.appendChild(btn_delete);
+      
+      listfood.appendChild(card_food)
+      dom_card_listfood.appendChild(listfood);
+    }
+  }
   function onCancel(e) {
     hide(dom_fooddialog);
     let get_title = document.querySelector("#title");
@@ -71,62 +128,6 @@ function getImage(element) {
 
 // create foods ==================================================================
 
-function createListfood(){
-  document.querySelector("#cards-item").remove();
-  let listfood = document.createElement("div");
-  listfood.id = "cards-item";
-  
-  for (let index = 0; index < foods.length; index++) {
-    let card_food = document.createElement("div")
-    card_food.id ="card-food"
-    card_food.dataset.index = index
-    
-    let div1 = document.createElement("div");
-    div1.className = "number-food"
-    card_food.appendChild(div1);
-    
-    let image_food = document.createElement("img");
-    image_food.id = "img-sell";
-    image_food.src = foods[index].image;
-    div1.appendChild(image_food);
-
-    let titles = document.createElement("p");
-    titles.textContent = foods[index].title;
-    div1.appendChild(titles)
-
-    let price = document.createElement("p");
-    let span = document.createElement("span");
-    span.textContent = foods[index].price;
-
-    let currency = document.createElement("span");
-    currency.textContent = foods[index].currency;
-
-    price.appendChild(span);
-    price.appendChild(currency);
-    div1.appendChild(price);
-
-    let descriptions = document.createElement("p");
-    descriptions.textContent = foods[index].description;
-    card_food.appendChild(descriptions)
-    
-    let div = document.createElement("div");
-    div.className = "btn-edit"
-    card_food.appendChild(div);
-    
-    let btn_edit = document.createElement("button");
-    btn_edit.textContent = "Edit";
-    btn_edit.addEventListener("click",editFood )
-    div.appendChild(btn_edit);
-    
-    let btn_delete= document.createElement("button");
-    btn_delete.textContent = "Delete";
-    btn_delete.addEventListener("click",removefoods)
-    div.appendChild(btn_delete);
-    
-    listfood.appendChild(card_food)
-    dom_card_listfood.appendChild(listfood);
-  }
-}
 // remove the foods=============================================================
 
 function removefoods(event) {

@@ -8,7 +8,7 @@ let search_value = document.querySelector("#search");
 search_value.addEventListener("keyup",searchFood)
 let food_detail  = [];
 let food_cart= JSON.parse(localStorage.getItem("food-cart"));
-let counter = food_cart.length
+let counter = 0
 if (counter<1){
   food_cart  = [];
 }
